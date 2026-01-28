@@ -1,79 +1,70 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-*{
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-
 }
 
 body{
-    border: solid;
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    background-color: #f0f2f5;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     height: 100vh;
-    background-color: #001F3F;
-    font-family: "Poppins",sans-serif;
 }
 
 
 .caixa-login{
-    margin-top: 200px;
-    border: solid red;
-    justify-items: center;
-    height: 50vh;
-    align-content: center;
-    background-color:#F5AA53;
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
 }
 
-form{
-    gap: 30px;
-   border: solid; 
-   width: 30%;
-   height: 30vh;
-
-   justify-items: center;
-}
-form>h1{
-color: #D9430D;
-}
-form>div{
-    border: solid blue;
-    width: 20vw;
-    justify-items: center;
-    margin-left: 45px;
+h1{
+    color: #333;
+    margin-bottom: 25px;
+    font-size: 1.6rem;
 }
 
-form>div>input{
 
-
-
-    
-    
-    width: 80%;
-    height: 40px;
-    margin-left: 18px;
-   border: none;
-    margin-top: 10px;
-border-radius:8px ;
-
+.box-email,.box-senha{
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 15px; 
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s ease;
 }
-form>div>input::placeholder{
-    color: gray;
-    font-weight:600;
-    font-size: 18px;
-    padding-left:10px;
+
+.box-email:focus, .box-senha:focus {
+    border-color: #007bff;
 }
-form>div>button{
+
+
+.button-login{
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    color: white;
     border: none;
-    width: 80%;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
     margin-top: 10px;
-    margin-left: 18px;
-    height: 35px;
-    border-radius:8px;
-    font-weight: 700;
-    font-size: 17px;
-    background-color: thistle;
-
 }
-form>div>button:hover{
-    background-color: plum;
+
+.button-login:hover {
+    background-color: #0056b3;
 }
