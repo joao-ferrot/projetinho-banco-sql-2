@@ -1,7 +1,7 @@
 const express =require('express')
 const session = require('express-session');
 const bcrypt = require('bcrypt');
-const db=require('./db');
+const db=require('./db.js');
 
 const app=express();
 const PORT=3000;
@@ -22,7 +22,7 @@ app.post('/register',async(req,res)=>{
     const hashedPassword=await bcrypt.hash(password,10);
 
     try{
-        await db.query('INSERT INTO users (nome,email,password) VALUES ($1$,$2)'[nome,email,hashedPassword]);
+        await db.query('INSERT INTO users (nome,email,password) VALUES ($1,$2)'[nome,email,hashedPassword]);
         res.redirect('/login.html');
 
     }
