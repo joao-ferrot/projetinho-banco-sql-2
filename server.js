@@ -1,11 +1,13 @@
 const express =require('express')
 const session = require('express-session');
-const bcrypt = require('bcrypt');
-const db=require('./db.js');
+const bcrypt = require('bcryptjs');
+const pool=require('./db.js');
+const cors =require('cors');
 
 const app=express();
 const PORT=3000;
 
+app.use(cors());
 app.use(express.urlencoded({extended:true}));
 
 app.use(express.static('public'));
@@ -22,7 +24,7 @@ app.post('/register',async(req,res)=>{
     const hashedPassword=await bcrypt.hash(password,10);
 
     try{
-        await db.query('INSERT INTO users (nome,email,password) VALUES ($1,$2)'[nome,email,hashedPassword]);
+        await pool.query('INSERT INTO users (nome,email,password) VALUES ($1,$2)'[nome,email,hashedPassword]);
         res.redirect('/login.html');
 
     }
@@ -37,7 +39,7 @@ app.post('/register',async(req,res)=>{
 app.post('/login',async(req,res)=>{
     const {email,password}=req.body;
     try{
-        const result =await db.query('SELECT * FROM users WHERE email=$1',[email]);
+        const result =await pool.query('SELECT * FROM users WHERE email=$1',[email]);
         const user=result.rows[0];
 
         if(result.rowCount===0){
@@ -49,7 +51,7 @@ app.post('/login',async(req,res)=>{
             return res.send('senha incorreta');
         }
         req.session.userId=user.indexOf;
-        res.redirect('/dashboard.html');
+        res.redirect('/home.html');
         
 
     }catch(err){
@@ -68,7 +70,7 @@ app.get('/dashboard',async(req,res)=>{
 
 });
 
-app.listen(port,()=>{
-    console.log('servidor rodando em http://localhost:${PORT}');
+app.listen(PORT,()=>{
+    console.log('servidor rodando em http://localhost:'+PORT);
 });
 
