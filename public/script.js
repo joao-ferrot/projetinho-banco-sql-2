@@ -10,7 +10,7 @@ err.preventDefault();
 const email=document.getElementById('email').value;
 const senha=document.getElementById('senha').value;
 
-const response= await fetch(rota+'/login',{
+const response=await fetch(rota+'/login',{
     method:'POST',
     headers:{
         'Content-Type':'application/json'
